@@ -1,0 +1,68 @@
+<html>
+    <title>mandelbrot demo</title>
+    <script src="complex-numbers.js"></script>
+    <style>
+        body {margin: 0px; overflow: hidden;
+              xbackground-image: url(deer.jpg);
+              xbackground-repeat: no-repeat;
+        }
+    </style>
+    <body>
+      <canvas id="canvas1"></canvas>
+        <script>
+            //mandelbrot set
+            //nick fallon 2014
+            var canvas;
+            var ctx;
+            window.onload = function () {
+                //setup canvas
+                canvas = document.getElementById("canvas1");
+                ctx = canvas.getContext("2d");
+                ctx.canvas.width = window.innerWidth;
+                ctx.canvas.height = window.innerHeight;
+                //clear
+                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                //build set
+                var xi = 0.01;
+                var yi = 0.01;
+                var xx = 0;
+                var yy = 0;
+                for (var y = -2.0; y < +2.0; y = y + yi) {
+                    for (var x = -3.0 ; x < +2.0 ; x = x + xi) {
+                        var c = new Complex(x,y);
+                        var d = c.clone();
+                        var iter = 0;
+                        //loop //z -> z*z + c
+                        for (var j = 0; j < 30; j++) {
+
+                            d.multiplyComponent(d.a, d.b);
+                            
+                            d.addComponent(c.a, c.b);
+
+                            iter++;
+                            var len = Math.sqrt(d.a * d.a + d.b * d.b);
+                            if (len > 2) {
+                                break;
+                            }
+                        }
+                        var len = Math.sqrt(d.a * d.a + d.b * d.b);
+                        if (len > 2) {
+                            var r = iter * 4;
+                            var g = 3;
+                            var b = iter * 12;
+                            ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
+                        }
+                        else {
+                            ctx.fillStyle = "rgb(0,0,0)";
+                        }
+                        ctx.fillRect(xx, yy, 1, 1);
+                        xx = xx + 1;
+                    }
+                    xx = 0;
+                    yy = yy + 1;
+                }
+            }
+        </script>
+    </body>
+</html>
+
