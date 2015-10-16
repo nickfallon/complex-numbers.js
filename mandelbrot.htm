@@ -28,23 +28,23 @@
                 for (var y = -2.0; y < +2.0; y = y + yi) {
                     for (var x = -3.0 ; x < +2.0 ; x = x + xi) {
                         var c = new Complex(x,y);
-                        var d = c.clone();
+                        var z = c.clone();
                         var iter = 0;
                         //loop 
                         //z -> z*z + c
                         for (var j = 0; j < 30; j++) {
 
-                            d.multiplyComponent(d.a, d.b);
+                            z.multiplyComponent(z.a, z.b);
                             
-                            d.addComponent(c.a, c.b);
+                            z.addComponent(c.a, c.b);
 
                             iter++;
-                            var len = Math.sqrt(d.a * d.a + d.b * d.b);
+                            var len = Math.sqrt(z.a * z.a + z.b * z.b);
                             if (len > 2) {
                                 break;
                             }
                         }
-                        var len = Math.sqrt(d.a * d.a + d.b * d.b);
+                        var len = Math.sqrt(z.a * z.a + z.b * z.b);
                         if (len > 2) {
                             var r = iter * 4;
                             var g = 3;
