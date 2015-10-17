@@ -1,5 +1,4 @@
 //complex numbers
-//nick.fallon@centralfax.co.uk
 
 function Complex(a,b){
 	//complex number a + bi
