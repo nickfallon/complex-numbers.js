@@ -27,8 +27,11 @@
                 var yy = 0;
                 for (var y = -2.0; y < +2.0; y = y + yi) {
                     for (var x = -3.0 ; x < +2.0 ; x = x + xi) {
+                        
                         var c = new Complex(x,y);
+                        
                         var z = c.clone();
+                        
                         var iter = 0;
                         //loop 
                         //z -> z*z + c
