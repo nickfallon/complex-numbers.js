@@ -19,25 +19,27 @@
                 ctx.canvas.height = window.innerHeight;
                 //clear
                 ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-                //build set
+                //amount to increment complex number by
                 var xi = 0.01;
                 var yi = 0.01;
+                //pixel cursor position
                 var xx = 0;
                 var yy = 0;
+                //for each point in a window on the complex plane
                 for (var y = -2.0; y < +2.0; y = y + yi) {
                     for (var x = -3.0 ; x < +2.0 ; x = x + xi) {
-                        
+                        //get the complex number
                         var c = new Complex(x,y);
-                        
+                        //clone to z
                         var z = c.clone();
                         
                         var iter = 0;
                         //loop 
                         //z -> z*z + c
                         for (var j = 0; j < 30; j++) {
-
+                            //z * z
                             z.multiplyComponent(z.a, z.b);
-                            
+                            // + c
                             z.addComponent(c.a, c.b);
 
                             iter++;
@@ -48,17 +50,21 @@
                         }
                         var len = Math.sqrt(z.a * z.a + z.b * z.b);
                         if (len > 2) {
+                            //choose colour based on iterations
                             var r = iter * 4;
                             var g = 3;
                             var b = iter * 12;
                             ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
                         }
                         else {
+                            //inside set
                             ctx.fillStyle = "rgb(0,0,0)";
                         }
+                        //plot the point
                         ctx.fillRect(xx, yy, 1, 1);
                         xx = xx + 1;
                     }
+                    //next point
                     xx = 0;
                     yy = yy + 1;
                 }
