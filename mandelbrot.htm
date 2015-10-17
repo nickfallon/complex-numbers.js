@@ -42,6 +42,8 @@
                             // + c
                             z.addComponent(c.a, c.b);
 
+                            //count the number of iterations until
+                            //we are going to infinity (greater than 2)
                             iter++;
                             var len = Math.sqrt(z.a * z.a + z.b * z.b);
                             if (len > 2) {
@@ -57,7 +59,7 @@
                             ctx.fillStyle = "rgb(" + r + "," + g + "," + b + ")";
                         }
                         else {
-                            //inside set
+                            //paint black inside the set 
                             ctx.fillStyle = "rgb(0,0,0)";
                         }
                         //plot the point
