@@ -1,6 +1,8 @@
 <html>
     <title>mandelbrot demo</title>
+    
     <script src="complex-numbers.js"></script>
+    
     <style>
         body {margin: 0px;overflow: hidden;
         }
@@ -28,8 +30,10 @@
                 //for each point in a window on the complex plane
                 for (var y = -2.0; y < +2.0; y = y + yi) {
                     for (var x = -3.0 ; x < +2.0 ; x = x + xi) {
+                        
                         //get the complex number
                         var c = new Complex(x,y);
+                        
                         //clone to z
                         var z = c.clone();
                         
@@ -38,8 +42,10 @@
                         //iterate z -> z*z + c
                         
                         for (var j = 0; j < 30; j++) {
+                            
                             //z * z
                             z.multiplyComponent(z.a, z.b);
+                            
                             // + c
                             z.addComponent(c.a, c.b);
 
